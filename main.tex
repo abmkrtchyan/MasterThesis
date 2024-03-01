@@ -1,0 +1,49 @@
+\documentclass[a4paper,12pt]{report}
+
+\usepackage{graphicx}
+\usepackage[left=3.0cm, right=1.5cm, top=2.0cm, bottom=2.5cm]{geometry}
+\usepackage[english, russian]{babel}
+\usepackage[latin,safe]{armtex}
+
+\usepackage{setspace}
+\onehalfspacing
+
+% Heading formats
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\bfseries\centering}{\MakeUppercase{\chaptertitlename} \thechapter}{12pt}{}
+\titlespacing*{\chapter}{0pt}{0pt}{23pt}
+
+% Paragraph indentation
+\setlength{\parindent}{1cm}
+
+% Page numbering
+\usepackage{fancyhdr}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage}
+\pagestyle{fancy}
+
+\title{Thesis title}
+
+\begin{document}
+
+\input{title_page}
+
+\pagenumbering{arabic}
+\setcounter{page}{3}
+
+\input{chapters/abstract}
+\addcontentsline{toc}{chapter}{\armtm{Համառոտագիր}}
+\tableofcontents
+
+\cleardoublepage % Start new chapter on odd-numbered page
+
+\chapter{\armtm{Ներածություն}}
+\input{chapters/introduction}
+
+\chapter{\armtm{Եզրակացություն}}
+\input{chapters/conclusion}
+
+\chapter{\armtm{Գրականություն}}
+
+\end{document}
