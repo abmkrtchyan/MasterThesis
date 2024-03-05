@@ -1,49 +1,88 @@
 \documentclass[a4paper,12pt]{report}
 
-\usepackage{graphicx}
 \usepackage[left=3.0cm, right=1.5cm, top=2.0cm, bottom=2.5cm]{geometry}
-\usepackage[english, russian]{babel}
-\usepackage[latin,safe]{armtex}
+\usepackage[utf8]{inputenc}
+\usepackage[latin, safe]{armtex}
+
+\usepackage{titlesec}
+\usepackage{tocloft}
 
 \usepackage{setspace}
+\usepackage{natbib} 
+\usepackage{fancyhdr}
+
 \onehalfspacing
-
-% Heading formats
-\usepackage{titlesec}
-\titleformat{\chapter}[display]{\bfseries\centering}{\MakeUppercase{\chaptertitlename} \thechapter}{12pt}{}
-\titlespacing*{\chapter}{0pt}{0pt}{23pt}
-
-% Paragraph indentation
 \setlength{\parindent}{1cm}
 
-% Page numbering
-\usepackage{fancyhdr}
-\fancyhf{}
-\renewcommand{\headrulewidth}{0pt}
-\fancyfoot[C]{\thepage}
-\pagestyle{fancy}
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
 
-\title{Thesis title}
+\titleformat{\section}
+{\fontsize{12}{14.4}\bfseries\centering}
+{\thesection}
+{1em}
+{}
+
+\titleformat{\subsection}
+{\fontsize{12}{14.4}\bfseries\centering}
+{\thesubsection}
+{1em}
+{}
+
+% Adjust spacing for section headers
+\titlespacing*{\section}{0pt}{1cm}{1cm}
+\titlespacing*{\subsection}{0pt}{1cm}{1cm} % Adjust the second argument for top spacing and the third argument for bottom spacing
+
+% Bold fonts for table of contents
+\renewcommand{\cftsecfont}{\fontsize{12}{14.4}\bfseries}
+\renewcommand{\cftsubsecfont}{\fontsize{12}{14.4}\bfseries}
+
+% Adjust font size for "CONTENTS"
+\renewcommand{\contentsname}{\armbf{Բովանդակություն}}
+\renewcommand{\cfttoctitlefont}{\fontsize{12}{14.4}\bfseries}
+
+\renewcommand\bibname{\armbf{Գրականություն}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
 
 \begin{document}
-
-\input{title_page}
-
-\pagenumbering{arabic}
-\setcounter{page}{2}
-
-\input{signaturePage.tex}
-
-\input{chapters/abstract}
-\addcontentsline{toc}{chapter}{\armtm{Համառոտագիր}}
-\tableofcontents
-
-\chapter{\armtm{Ներածություն}}
-\input{chapters/introduction}
-
-\chapter{\armtm{Եզրակացություն}}
-\input{chapters/conclusion}
-
-\chapter{\armtm{Գրականություն}}
-
+	
+	\input{titlePage/title_page}
+	
+	\pagenumbering{arabic}
+	\setcounter{page}{2}
+	
+	\input{signaturePage/signaturePage.tex}
+	
+	\input{chapters/abstract}
+	
+	\newpage
+	\begin{center}
+		\tableofcontents
+	\end{center}
+	
+	\clearpage
+	
+	\section*{\armbf{ՆԵՐԱԾՈՒԹՅՈՒՆ}}
+	\addcontentsline{toc}{section}{\armbf{ՆԵՐԱԾՈՒԹՅՈՒՆ}}
+	\input{chapters/introduction}
+	
+	\clearpage
+	
+	\section{\armbf{Վերնագիր մեկ}}
+	\input{chapters/vernagir1}
+	
+	\clearpage
+	
+	\section*{\armbf{Եզրակացություն}}
+	\addcontentsline{toc}{section}{\armbf{Եզրակացություն}}
+	\input{chapters/conclusion}
+	
+	\clearpage
+	
+	\addcontentsline{toc}{section}{\armbf{Գրականություն}}
+	
+	\bibliographystyle{plainnat} 
+	\bibliography{bibliography}
+	\clearpage
 \end{document}
