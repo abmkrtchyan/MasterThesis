@@ -2,6 +2,7 @@
 
 \usepackage[left=3.0cm, right=1.5cm, top=2.0cm, bottom=2.5cm]{geometry}
 \usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
 \usepackage[latin, safe]{armtex}
 
 \usepackage{titlesec}
@@ -43,10 +44,13 @@
 \renewcommand{\cftsubsecfont}{\fontsize{12}{14.4}\bfseries}
 
 % Adjust font size for "CONTENTS"
-\renewcommand{\contentsname}{\armbf{Բովանդակություն}}
+\addto\captionsrussian{\renewcommand{\contentsname}{\armbf{Բովանդակություն}}}
 \renewcommand{\cfttoctitlefont}{\fontsize{12}{14.4}\bfseries}
 
-\renewcommand\bibname{\armtm{Գրականություն}}
+% Adjust font size and name for bibliography
+\addto\captionsrussian{\renewcommand{\bibname}{\armtm{Գրականություն}}}
+
+% Add dot leaders for table of contents
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 \renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
 
@@ -87,10 +91,11 @@
     % Add vertical space before \bibname
     \vspace*{\fill}
 
-    \addcontentsline{toc}{section}{\armbf{Գրականություն}}
-
     \bibliographystyle{plainnat}
     \bibliography{bibliography}
+
+    \addcontentsline{toc}{section}{\armbf{Գրականություն}}
+
     \clearpage
 
 \end{document}
