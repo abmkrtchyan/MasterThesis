@@ -8,8 +8,13 @@
 \usepackage{tocloft}
 
 \usepackage{setspace}
-\usepackage{natbib} 
+\usepackage[numbers]{natbib}
 \usepackage{fancyhdr}
+
+
+% Adjust font size and centering for \bibname
+\titleformat{\chapter}[display]
+{\fontsize{12}{14.4}\bfseries\centering}{\chaptertitlename\ \thesection}{1em}{}
 
 \onehalfspacing
 \setlength{\parindent}{1cm}
