@@ -46,45 +46,46 @@
 \renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
 
 \begin{document}
-	
-	\input{titlePage/title_page}
-	
-	\pagenumbering{arabic}
-	\setcounter{page}{2}
-	
-	\input{signaturePage/signaturePage}
-	
-	\input{chapters/abstract}
-	
-	\newpage
-	\begin{center}
-		\tableofcontents
-	\end{center}
-	
-	\clearpage
-	
-	\section*{\armbf{ՆԵՐԱԾՈՒԹՅՈՒՆ}}
-	\addcontentsline{toc}{section}{\armbf{ՆԵՐԱԾՈՒԹՅՈՒՆ}}
-	\input{chapters/introduction}
-	
-	\clearpage
-	
-	\section{\armbf{Վերնագիր մեկ}}
-	\input{chapters/vernagir1}
-	
-	\clearpage
-	
-	\section*{\armbf{Եզրակացություն}}
-	\addcontentsline{toc}{section}{\armbf{Եզրակացություն}}
-	\input{chapters/conclusion}
-	
-	% Add vertical space before \bibname
-	\vspace*{\fill}
-	
-	\addcontentsline{toc}{section}{\armbf{Գրականություն}}
-	
-	\bibliographystyle{plainnat} 
-	\bibliography{bibliography}
-	\clearpage
-	
+
+    \input{titlePage/title_page}
+
+    \pagenumbering{arabic}
+    \setcounter{page}{2}
+
+    \input{signaturePage/signaturePage}
+
+    \input{chapters/abstract}
+
+    \newpage
+    \begin{center}
+        \tableofcontents
+    \end{center}
+
+    \clearpage
+
+    \section*{\armbf{ՆԵՐԱԾՈՒԹՅՈՒՆ}}
+    \addcontentsline{toc}{section}{\armbf{ՆԵՐԱԾՈՒԹՅՈՒՆ}}
+    \input{chapters/introduction}
+
+    \clearpage
+
+
+    \section{\armbf{Վերնագիր մեկ}}
+    \input{chapters/vernagir1}
+
+    \clearpage
+
+    \section*{\armbf{Եզրակացություն}}
+    \addcontentsline{toc}{section}{\armbf{Եզրակացություն}}
+    \input{chapters/conclusion}
+
+    % Add vertical space before \bibname
+    \vspace*{\fill}
+
+    \addcontentsline{toc}{section}{\armbf{Գրականություն}}
+
+    \bibliographystyle{plainnat}
+    \bibliography{bibliography}
+    \clearpage
+
 \end{document}
