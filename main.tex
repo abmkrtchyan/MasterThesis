@@ -31,7 +31,7 @@
 
 % Adjust spacing for section headers
 \titlespacing*{\section}{0pt}{1cm}{1cm}
-\titlespacing*{\subsection}{0pt}{1cm}{1cm} % Adjust the second argument for top spacing and the third argument for bottom spacing
+\titlespacing*{\subsection}{0pt}{1cm}{1cm}
 
 % Bold fonts for table of contents
 \renewcommand{\cftsecfont}{\fontsize{12}{14.4}\bfseries}
@@ -41,7 +41,7 @@
 \renewcommand{\contentsname}{\armbf{Բովանդակություն}}
 \renewcommand{\cfttoctitlefont}{\fontsize{12}{14.4}\bfseries}
 
-\renewcommand\bibname{\armbf{Գրականություն}}
+\renewcommand\bibname{\armtm{Գրականություն}}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 \renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
 
@@ -78,11 +78,13 @@
 	\addcontentsline{toc}{section}{\armbf{Եզրակացություն}}
 	\input{chapters/conclusion}
 	
-	\clearpage
+	% Add vertical space before \bibname
+	\vspace*{\fill}
 	
 	\addcontentsline{toc}{section}{\armbf{Գրականություն}}
 	
 	\bibliographystyle{plainnat} 
 	\bibliography{bibliography}
 	\clearpage
+	
 \end{document}
