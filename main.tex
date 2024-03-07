@@ -1,10 +1,9 @@
-\documentclass[a4paper,12pt]{report}
+%NOTE! compile with XeLaTeX
+\documentclass[a4paper]{report}
 
 \usepackage[left=3.0cm, right=1.5cm, top=2.0cm, bottom=2.5cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{ragged2e}
-\usepackage[english,russian]{babel}
-\usepackage[latin, safe]{armtex}
 
 \usepackage{titlesec}
 \usepackage{tocloft}
@@ -13,25 +12,30 @@
 \usepackage[numbers]{natbib}
 \usepackage{fancyhdr}
 
+%Հայերենի համար անհրաժեշտ բաղադրամասեր
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage[numerals=arabic]{armenian}
+\newfontfamily\armenianfont{GHEA Mariam}
 
 % Adjust font size and centering for \bibname
 \titleformat{\chapter}[display]
-{\fontsize{12}{14.4}\bfseries\centering}{\chaptertitlename\ \thesection}{1em}{}
+{\bfseries\centering}{\chaptertitlename\ \thesection}{1em}{}
 
 \onehalfspacing
 \setlength{\parindent}{1cm}
 
-\renewcommand{\thesection}{\arabic{section}.}
-\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
 
 \titleformat{\section}
-{\fontsize{12}{14.4}\bfseries\centering}
+{\bfseries\centering}
 {\thesection}
 {1em}
 {}
 
 \titleformat{\subsection}
-{\fontsize{12}{14.4}\bfseries\centering}
+{\bfseries\centering}
 {\thesubsection}
 {1em}
 {}
@@ -41,19 +45,20 @@
 \titlespacing*{\subsection}{0pt}{1cm}{1cm}
 
 % Bold fonts for table of contents
-\renewcommand{\cftsecfont}{\fontsize{12}{14.4}\bfseries}
-\renewcommand{\cftsubsecfont}{\fontsize{12}{14.4}\bfseries}
+\renewcommand{\cftsecfont}{\bfseries}
+\renewcommand{\cftsubsecfont}{\bfseries}
 
 % Adjust font size for "CONTENTS"
-\addto\captionsrussian{\renewcommand{\contentsname}{\armbf{Բովանդակություն}}}
-\renewcommand{\cfttoctitlefont}{\fontsize{12}{14.4}\bfseries}
+\sloppy
+\renewcommand{\contentsname}{Բովանդակություն} %որ contents-ի փոխարեն հայերեն գրի
+\renewcommand{\cfttoctitlefont}{\bfseries}
 
 % Adjust font size and name for bibliography
-\addto\captionsrussian{\renewcommand{\bibname}{\armtm{Գրականություն}}}
+\renewcommand{\bibname}{Գրականություն} %որ references-ի փոխարեն հայերեն գրի
 
-% Add dot leaders for table of contents
-\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\usepackage{amsmath}
+\usepackage{indentfirst} %էս էլ որ ամեն պարագրաֆ մի մատ խորքից գրի՝ հայերեն կանոներին համապատասխան
+
 
 \begin{document}
 
@@ -73,20 +78,20 @@
 
     \clearpage
 
-    \section*{\armbf{ՆԵՐԱԾՈՒԹՅՈՒՆ}}
-    \addcontentsline{toc}{section}{\armbf{ՆԵՐԱԾՈՒԹՅՈՒՆ}}
+    \section*{\textbf{ՆԵՐԱԾՈՒԹՅՈՒՆ}}
+    \addcontentsline{toc}{section}{ՆԵՐԱԾՈՒԹՅՈՒՆ}
     \input{chapters/introduction}
 
     \clearpage
 
 
-    \section{\armbf{Վերնագիր մեկ}}
+    \section{Վերնագիր մեկ}
     \input{chapters/vernagir1}
 
     \clearpage
 
-    \section*{\armbf{Եզրակացություն}}
-    \addcontentsline{toc}{section}{\armbf{Եզրակացություն}}
+    \section*{Եզրակացություն}
+    \addcontentsline{toc}{section}{Եզրակացություն}
     \input{chapters/conclusion}
 
     % Add vertical space before \bibname
@@ -95,8 +100,7 @@
     \bibliographystyle{plainnat}
     \bibliography{bibliography}
 
-    \addcontentsline{toc}{section}{\armbf{Գրականություն}}
+    \addcontentsline{toc}{section}{Գրականություն}
 
     \clearpage
-
 \end{document}
