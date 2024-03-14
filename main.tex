@@ -1,5 +1,5 @@
 %NOTE! compile with XeLaTeX
-\documentclass[a4paper]{report}
+\documentclass[a4paper, 12pt]{report}
 
 \usepackage[left=3.0cm, right=1.5cm, top=2.0cm, bottom=2.5cm]{geometry}
 \usepackage[utf8]{inputenc}
@@ -22,11 +22,11 @@
 \titleformat{\chapter}[display]
 {\bfseries\centering}{\chaptertitlename\ \thesection}{1em}{}
 
-\onehalfspacing
-\setlength{\parindent}{1cm}
+\linespread{1.5} % միջտողային հեռավորությունը
+\setlength{\parindent}{0cm} % Նոր պարբերությունը 0սմ հեռավորությունից սկսել
 
-\renewcommand{\thesection}{\arabic{section}}
-\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
 
 \titleformat{\section}
 {\bfseries\centering}
@@ -49,15 +49,16 @@
 \renewcommand{\cftsubsecfont}{\bfseries}
 
 % Adjust font size for "CONTENTS"
-\sloppy
 \renewcommand{\contentsname}{Բովանդակություն} %որ contents-ի փոխարեն հայերեն գրի
 \renewcommand{\cfttoctitlefont}{\bfseries}
 
 % Adjust font size and name for bibliography
 \renewcommand{\bibname}{Գրականություն} %որ references-ի փոխարեն հայերեն գրի
 
+\usepackage[none]{hyphenat} %որ տողադարձ չանի
+\sloppy %ձախից և աջից հավասարեցում
 \usepackage{amsmath}
-\usepackage{indentfirst} %էս էլ որ ամեն պարագրաֆ մի մատ խորքից գրի՝ հայերեն կանոներին համապատասխան
+
 
 
 \begin{document}
@@ -69,7 +70,7 @@
 
     \input{signaturePage/signaturePage}
 
-    \input{chapters/abstract}
+    \input{section/abstract}
 
     \newpage
     \begin{center}
@@ -80,22 +81,33 @@
 
     \section*{\textbf{ՆԵՐԱԾՈՒԹՅՈՒՆ}}
     \addcontentsline{toc}{section}{ՆԵՐԱԾՈՒԹՅՈՒՆ}
-    \input{chapters/introduction}
-
-    \clearpage
+    \input{section/introduction}
 
 
     \section{Վերնագիր մեկ}
-    \input{chapters/vernagir1}
+    \input{section/vernagir1}
 
+	\section{Խնդրի դրվածքը}
+	\input{section/problemFormulation}
+		
+	\section{Գոյություն ունեցող գործիքներ}
+	\input{section/existingTools}
+			
+	\section{Բուն թեման}
+	\input{section/bunTema}
+		
+	\section{Թեստավորում}
+	\input{section/testing}
+			
+	\section{Հետագա աշխատանք}
+	\input{section/furtherWork}
+	
     \clearpage
-
     \section*{Եզրակացություն}
     \addcontentsline{toc}{section}{Եզրակացություն}
-    \input{chapters/conclusion}
+    \input{section/conclusion}
 
     % Add vertical space before \bibname
-    \vspace*{\fill}
 
     \bibliographystyle{plainnat}
     \bibliography{bibliography}
