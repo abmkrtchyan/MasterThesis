@@ -11,8 +11,8 @@
 \usepackage{setspace}
 \usepackage[numbers]{natbib}
 \usepackage{fancyhdr}
-
 \usepackage[none]{hyphenat} %որ տողադարձ չանի
+
 \usepackage{amssymb} % for additional math environments and symbols
 \usepackage{amsmath}
 
@@ -34,7 +34,7 @@
 \renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
 \renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}.}
 
-% Վերնագրերը գրվեն մեջտեղից և մուգ
+% Վերնագրերը տեքստում գրվեն մեջտեղից և մուգ
 \titleformat{\section}
 {\bfseries\centering}
 {\thesection}
@@ -67,7 +67,8 @@
 \renewcommand{\bibname}{Գրականություն} %որ references-ի փոխարեն հայերեն գրի
 
 \sloppy %ձախից և աջից հավասարեցում
-
+\usepackage{indentfirst}
+\setlength{\parindent}{1cm} % Գրել մի մատ խորքից
 
 \begin{document}
 
