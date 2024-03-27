@@ -12,6 +12,10 @@
 \usepackage[numbers]{natbib}
 \usepackage{fancyhdr}
 
+\usepackage[none]{hyphenat} %որ տողադարձ չանի
+\usepackage{amssymb} % for additional math environments and symbols
+\usepackage{amsmath}
+
 %Հայերենի համար անհրաժեշտ բաղադրամասեր
 \usepackage{fontspec}
 \usepackage{polyglossia}
@@ -25,11 +29,12 @@
 \linespread{1.5} % միջտողային հեռավորությունը
 \setlength{\parindent}{0cm} % Նոր պարբերությունը 0սմ հեռավորությունից սկսել
 
+% Բովանդակության համարակալման և տեսքի համար
 \renewcommand{\thesection}{\arabic{section}.}
 \renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
 \renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}.}
 
-% Տեքստում գրվի մեջտեղից և մուգ 
+% Վերնագրերը գրվեն մեջտեղից և մուգ
 \titleformat{\section}
 {\bfseries\centering}
 {\thesection}
@@ -56,19 +61,12 @@
 \renewcommand{\cftsecfont}{\bfseries}
 \renewcommand{\cftsubsecfont}{\bfseries}
 
-% Adjust font size for "CONTENTS"
 \renewcommand{\contentsname}{Բովանդակություն} %որ contents-ի փոխարեն հայերեն գրի
 \renewcommand{\cfttoctitlefont}{\bfseries} % որ Բովանդակությունը գրվի փոքր և մուգ տառերով
 
-% Adjust font size and name for bibliography
 \renewcommand{\bibname}{Գրականություն} %որ references-ի փոխարեն հայերեն գրի
 
-\usepackage[none]{hyphenat} %որ տողադարձ չանի
 \sloppy %ձախից և աջից հավասարեցում
-
-\usepackage{amssymb}
-\usepackage{amsmath} % for additional math environments and symbols
-
 
 
 \begin{document}
@@ -120,8 +118,6 @@
     \section*{Եզրակացություն}
     \addcontentsline{toc}{section}{Եզրակացություն}
     \input{section/conclusion}
-
-    % Add vertical space before \bibname
 
     \bibliographystyle{plainnat}
     \bibliography{bibliography}
