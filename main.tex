@@ -11,6 +11,7 @@
 \usepackage{setspace}
 \usepackage[numbers]{natbib}
 \usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
 \usepackage[none]{hyphenat} %որ տողադարձ չանի
 
 \usepackage{amssymb} % for additional math environments and symbols
@@ -81,6 +82,7 @@
 
     \input{signaturePage/signaturePage}
 
+    \clearpage
     \input{section/abstract}
 
     \newpage
@@ -89,7 +91,7 @@
     \end{center}
 
     \clearpage
-
+    \phantomsection
     \section*{\textbf{ՆԵՐԱԾՈՒԹՅՈՒՆ}}\label{sec:introduction}
     \addcontentsline{toc}{section}{ՆԵՐԱԾՈՒԹՅՈՒՆ}
     \input{section/introduction}
@@ -116,14 +118,14 @@
     \input{section/results}
 
     \clearpage
+    \phantomsection
     \section*{Եզրակացություն}\label{sec:conclusion}
     \addcontentsline{toc}{section}{Եզրակացություն}
     \input{section/conclusion}
 
+    \clearpage
+    \phantomsection
+    \addcontentsline{toc}{section}{Գրականություն}
     \bibliographystyle{plainnat}
     \bibliography{bibliography}
-
-    \addcontentsline{toc}{section}{Գրականություն}
-
-    \clearpage
 \end{document}
