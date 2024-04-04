@@ -72,13 +72,8 @@
 \setlength{\parindent}{1cm} % Գրել մի մատ խորքից
 
 \begin{document}
-
+    \pagenumbering{gobble} % Անջատել էջերի համարակալումը
     \input{titlePage/title_page}
-
-    \pagenumbering{arabic}
-    \setcounter{page}{2}
-    \setcounter{tocdepth}{3}
-    \setcounter{secnumdepth}{3}
 
     \input{signaturePage/signaturePage}
 
@@ -90,32 +85,43 @@
         \tableofcontents
     \end{center}
 
+    \pagenumbering{arabic} % Միացնել էջերի համարակալումը
+    \setcounter{page}{4} % համարակալումը սկսել 4-ից
+
     \clearpage
     \phantomsection
     \section*{\textbf{ՆԵՐԱԾՈՒԹՅՈՒՆ}}\label{sec:introduction}
     \addcontentsline{toc}{section}{ՆԵՐԱԾՈՒԹՅՈՒՆ}
     \input{section/introduction}
 
+
     \section{Արդիականություն}\label{sec:modernity}
     \input{section/modernity}
+
 
     \section{Խնդրի դրվածքը}\label{sec:problemFormulation}
     \input{section/problemFormulation}
 
+
     \section{Գոյություն ունեցող գործիքներ}\label{sec:existingTools}
     \input{section/existingTools}
+
 
     \section{Ծրագրային կոդի հատկությունների հարցումների համակարգ նախագծում}\label{sec:queryEngineDesign}
     \input{section/queryEngineDesign}
 
+
     \section{Ծրագրային կոդի հատկությունների հարցումների համակարգի իրականացում}\label{sec:queryEngineImplementation}
     \input{section/queryEngineImplementation}
+
 
     \section{Վիճակի փոփոխության վրա հիմնված սխալների հայտնաբերում}\label{sec:bugDetection}
     \input{section/bugDetection}
 
+
     \section{Արդյունքներ}\label{sec:results}
     \input{section/results}
+
 
     \section{Հետագա աշխատանք}\label{sec:furtherWork}
     \input{section/furtherWork}
