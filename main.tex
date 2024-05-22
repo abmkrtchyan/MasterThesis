@@ -11,6 +11,11 @@
 \usepackage{setspace}
 \usepackage[numbers]{natbib}
 \usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\usepackage[none]{hyphenat} %որ տողադարձ չանի
+
+\usepackage{amssymb} % for additional math environments and symbols
+\usepackage{amsmath}
 
 %Հայերենի համար անհրաժեշտ բաղադրամասեր
 \usepackage{fontspec}
@@ -25,11 +30,12 @@
 \linespread{1.5} % միջտողային հեռավորությունը
 \setlength{\parindent}{0cm} % Նոր պարբերությունը 0սմ հեռավորությունից սկսել
 
+% Բովանդակության համարակալման և տեսքի համար
 \renewcommand{\thesection}{\arabic{section}.}
 \renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
 \renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}.}
 
-% Տեքստում գրվի մեջտեղից և մուգ 
+% Վերնագրերը տեքստում գրվեն մեջտեղից և մուգ
 \titleformat{\section}
 {\bfseries\centering}
 {\thesection}
@@ -56,32 +62,22 @@
 \renewcommand{\cftsecfont}{\bfseries}
 \renewcommand{\cftsubsecfont}{\bfseries}
 
-% Adjust font size for "CONTENTS"
 \renewcommand{\contentsname}{Բովանդակություն} %որ contents-ի փոխարեն հայերեն գրի
 \renewcommand{\cfttoctitlefont}{\bfseries} % որ Բովանդակությունը գրվի փոքր և մուգ տառերով
 
-% Adjust font size and name for bibliography
 \renewcommand{\bibname}{Գրականություն} %որ references-ի փոխարեն հայերեն գրի
 
-\usepackage[none]{hyphenat} %որ տողադարձ չանի
 \sloppy %ձախից և աջից հավասարեցում
-
-\usepackage{amssymb}
-\usepackage{amsmath} % for additional math environments and symbols
-
-
+\usepackage{indentfirst}
+\setlength{\parindent}{1cm} % Գրել մի մատ խորքից
 
 \begin{document}
-
+    \pagenumbering{gobble} % Անջատել էջերի համարակալումը
     \input{titlePage/title_page}
-
-    \pagenumbering{arabic}
-    \setcounter{page}{2}
-    \setcounter{tocdepth}{3}
-    \setcounter{secnumdepth}{3}
 
     \input{signaturePage/signaturePage}
 
+    \clearpage
     \input{section/abstract}
 
     \newpage
@@ -89,45 +85,56 @@
         \tableofcontents
     \end{center}
 
-    \clearpage
+    \pagenumbering{arabic} % Միացնել էջերի համարակալումը
+    \setcounter{page}{4} % համարակալումը սկսել 4-ից
 
-    \section*{\textbf{ՆԵՐԱԾՈՒԹՅՈՒՆ}}
+    \clearpage
+    \phantomsection
+    \section*{\textbf{ՆԵՐԱԾՈՒԹՅՈՒՆ}}\label{sec:introduction}
     \addcontentsline{toc}{section}{ՆԵՐԱԾՈՒԹՅՈՒՆ}
     \input{section/introduction}
 
 
-    \section{Վերնագիր մեկ}
-    \input{section/vernagir1}
+    \section{Արդիականություն}\label{sec:modernity}
+    \input{section/modernity}
 
-	\section{Խնդրի դրվածքը}
-	\input{section/problemFormulation}
-		
-	\section{Գոյություն ունեցող գործիքներ}
-	\input{section/existingTools}
-			
-	\section{Բաց կոդով հասանելի նախագծերի հավաքագրում}
-	
-	
-	\section{Ծրագրային կոդի հատկությունների հարցումների համակարգ}
-	\input{section/queryEngine}
-		
-	\section{Թեստավորում}
-	\input{section/testing}
-			
-	\section{Հետագա աշխատանք}
-	\input{section/furtherWork}
-	
+
+    \section{Խնդրի դրվածքը}\label{sec:problemFormulation}
+    \input{section/problemFormulation}
+
+
+    \section{Գոյություն ունեցող գործիքներ}\label{sec:existingTools}
+    \input{section/existingTools}
+
+
+    \section{Ծրագրային կոդի հատկությունների հարցումների համակարգի նախագծում}\label{sec:queryEngineDesign}
+    \input{section/queryEngineDesign}
+
+
+    \section{Ծրագրային կոդի հատկությունների հարցումների համակարգի իրականացում}\label{sec:queryEngineImplementation}
+    \input{section/queryEngineImplementation}
+
+
+    \section{Վիճակի փոփոխության վրա հիմնված սխալների հայտնաբերում}\label{sec:bugDetection}
+    \input{section/bugDetection}
+
+
+    \section{Արդյունքներ}\label{sec:results}
+    \input{section/results}
+
+
+    \section{Հետագա աշխատանք}\label{sec:furtherWork}
+    \input{section/furtherWork}
+
     \clearpage
-    \section*{Եզրակացություն}
+    \phantomsection
+    \section*{Եզրակացություն}\label{sec:conclusion}
     \addcontentsline{toc}{section}{Եզրակացություն}
     \input{section/conclusion}
 
-    % Add vertical space before \bibname
-
+    \clearpage
+    \phantomsection
+    \addcontentsline{toc}{section}{Գրականություն}
     \bibliographystyle{plainnat}
     \bibliography{bibliography}
-
-    \addcontentsline{toc}{section}{Գրականություն}
-
-    \clearpage
 \end{document}
