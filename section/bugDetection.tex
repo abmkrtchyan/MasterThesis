@@ -1,34 +1,22 @@
 Ծրագրային կոդի հատկությունների հարցումների համակարգը օգտագործվել է դինամիկ հիշողության
 արտահոսքեր (memory leaks)\cite{MEMORYLEAK} հայտնաբերելու համար: Այդ նպատակով, համակարգի API-ի օգտագործմամբ
-իրականացվել է համապատասխան ստուգիչ (checker): Ստուգիչ մոդուլի աշխատանքը հիմնված է հետևյալ ալգորիթմի վրա.
+իրականացվել է համապատասխան ստուգիչ (checker) (Տես Նկար\ref{fig:figure3}): Ստուգիչի աշխատանքը հիմնված է հետևյալ ալգորիթմի վրա.
 \begin{enumerate}
     \item Գտնել malloc, calloc ֆունկցիաների կանչերի հրահանգները,
     \item Յուրաքանչյուր malloc, calloc կանչի համար որոշել նպատակային օպերանդը (destination),
     \item Յուրաքանչյուր նպատակային օպերանդից գտնել կախվածություն ունեցող և free կանչող հրահանգները (forward\_df\_free\_instructions),
-    \item Յուրաքանչյուր ճանապարհի համար, որ սկսվում է malloc, calloc կանչից և ավարտվում է ծրագրի վերջում, ստուգել, արդյոք այդ ճանապարհը պարունակում է forward\_df\_free\_instructions հրահանգներից որևէ մեկը:
+    \item Յուրաքանչյուր ճանապարհի համար, որ սկսվում է malloc, calloc կանչից և ավարտվում է ծրագրի վերջում, ստուգել,
+    արդյոք այդ ճանապարհը պարունակում է forward\_df\_free\_instructions հրահանգներից որևէ մեկը:
     \item Եթե ոչ, արձանագրել դինամիկ հիշողության արտահոսք, եթե ճանապարհն իրական է:
 \end{enumerate}
-\begin{lstlisting}[language=Python]
-    malloc_instructions = Instructions().with_callee_function_names(
-        ["malloc", "calloc"]
-    ).exec()
-    for malloc_instruction in malloc_instructions:
-        check_free_for_alloc(malloc_instruction)
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{pic3}
+    \caption{Հարցումների համակարգի API-ի օգտագործմամբ գրված դինամիկ հիշողության արտահոսքի ստուգիչ}
+    \label{fig:figure3}
+\end{figure}
 
-    def check_free_for_alloc(malloc_instruction):
-        buf = malloc_instruction.get_dest()
-        forward_df_free_instructions = {
-            forward_df_instruction
-            for forward_df_instruction in buf.forward_df()
-            if "free" in forward_df_instruction.callee_names()
-        }
-
-        for path in malloc_instruction.all_next_instructions_paths():
-            if not forward_df_free_instructions.intersection(path):
-                if sym_executor.path_exists(path):
-                    print("Memoryleak")
-\end{lstlisting}
 Հարցումների համակարգի օգտագործմամբ ստեղծված ստուգիչը թույլ է տալիս ավտոմատ կերպով հայտնաբերել
 այնպիսի դեպքեր, երբ ծրագրի աշխատանքի ընթացքում հիշողությունը չի ազատվում ամբողջությամբ: Սա կարևոր խնդիր է ծրագրային
 ապահովման որակի և արդյունավետության տեսանկյունից, քանի որ չազատված հիշողությունը կարող է հանգեցնել ծրագրի
