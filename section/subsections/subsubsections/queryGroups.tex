@@ -1,23 +1,20 @@
 {
-    Գրել բաժանումների մասին
+    \subsubsection{Հարցումների խմբեր}\label{subsubsec:queryGroups}
+    Հարցումների համակարգը տրամադրում է մի շարք հարցումների խմբեր՝ ծրագրի տարբեր հատկությունների վերլուծության համար.
+    \begin{enumerate}
+        \item Դասերի համար հարցումներ
+        \item Ֆունկցիաների համար հարցումներ
+        \item Հրահանգների համար հարցումներ
+        \item Օգտագործողի կողմից կառավարվող տվյալների վերլուծության հարցումներ
+    \end{enumerate}
 
-    \phantomsection
-    \subsubsection*{Հարցումներ դասերի համար}\label{subsubsec:classes}
-    \addcontentsline{toc}{subsubsection}{Հարցումներ դասերի համար}
-    Կլասների հարցումների մասին խոսել։
+    Հարցումների խմբերի բաժանման հիմնական նպատակն օգտագործողներին առավել պարզեցված API տրամադրելն է։
 
-    \phantomsection
-    \subsubsection*{Հարցումներ ֆունկցիաների համար}\label{subsubsec:functions}
-    \addcontentsline{toc}{subsubsection}{Հարցումներ ֆունկցիաների համար}
-    Ֆունկցիաների հարցումների մասին խոսել։
+    \input{section/QueryGroups/classes}
 
-    \phantomsection
-    \subsubsection*{Հարցումներ ինստրուկցիաների համար}\label{subsubsec:instructions}
-    \addcontentsline{toc}{subsubsection}{Հարցումներ ինստրուկցիաների համար}
-    Ինստրուկցիաների հարցումների մասին խոսել։
+    \input{section/QueryGroups/functions}
 
-    \phantomsection
-    \subsubsection*{Վիճակի փոփոխության վերլուծության հարցումներ}\label{subsubsec:taintAnalisys}
-    \addcontentsline{toc}{subsubsection}{Վիճակի փոփոխության վերլուծության հարցումներ}
-    Ավելացնել ալգորիթմերի բարդությունը։
+    \input{section/QueryGroups/instructions}
+
+    \input{section/QueryGroups/taintEngine}
 }
