@@ -11,14 +11,19 @@
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{pic16a}
+    \includegraphics[width=0.4\textwidth]{pic16a}
     \caption{Բուֆերի գերբեռնում պարունակող աղբյուր կոդ}
     \label{fig:figure16a}
 \end{figure}
 
+Նկար \ref{fig:figure16a}-ում ներկայացված է բուֆերի գերբեռնում պարունակող աղբյուր, 4-րդ տողի strcpy ֆունկցիայի երկրորդ արգումենտը (argv[1])
+կառավարվում է օգտագործողի կողմից, և հնարավոր է հանգեցնի բուֆերի գերբեռնման։
+Նկար \ref{fig:figure16b}-ում նկարագրված հարցումների միջոցով օգտագործողը գտնում է strcpy ֆունկցիայի երկրորդ արգումենտի վրա ազդող, ագտագործողի կողմից
+կառավարվող հրահանգները (tainted\_paths), և եթե այդ բազմությունը դատարկ չէ, տեղեկացնում է, որ առկա է բուֆերի գերբեռնում։
+
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{pic16b}
+    \includegraphics[width=0.9\textwidth]{pic16b}
     \caption{Օգտագործողի կողմից կառավարվող տվյալների վերլուծության հարցումների օրինակ}
     \label{fig:figure16b}
 \end{figure}
