@@ -12,6 +12,7 @@
 \usepackage{graphicx}
 \usepackage[table]{xcolor}
 \usepackage{tabularx}
+\usepackage{subcaption}
 \graphicspath{ {./images/} }
 
 \usepackage{titlesec}
@@ -98,38 +99,23 @@
     \setcounter{page}{4} % համարակալումը սկսել 4-ից
 
     \clearpage
-    \phantomsection
-    \section*{\textbf{ՆԵՐԱԾՈՒԹՅՈՒՆ}}\label{sec:introduction}
-    \addcontentsline{toc}{section}{ՆԵՐԱԾՈՒԹՅՈՒՆ}
     \input{section/introduction}
 
-
-    \section{Արդիականություն}\label{sec:modernity}
     \input{section/modernity}
 
-
-    \section{Խնդրի դրվածքը}\label{sec:problemFormulation}
     \input{section/problemFormulation}
 
-
-    \section{Գոյություն ունեցող գործիքներ}\label{sec:existingTools}
     \input{section/existingTools}
 
-
-    \section{Ծրագրային կոդի հատկությունների հարցումների համակարգի նախագծում}\label{sec:queryEngineDesign}
     \input{section/queryEngineDesign}
 
     \input{section/queryEngineImplementation}
 
-    \section{Դինամիկ հիշողության արտահոսքի սխալների հայտնաբերում}\label{sec:bugDetection}
     \input{section/bugDetection}
 
-    \input{section/furtherWork}
+%    \input{section/furtherWork}
 
     \clearpage
-    \phantomsection
-    \section*{Եզրակացություն}\label{sec:conclusion}
-    \addcontentsline{toc}{section}{Եզրակացություն}
     \input{section/conclusion}
 
     \clearpage
