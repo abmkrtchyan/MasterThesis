@@ -18,6 +18,14 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y texlive-full
 
+      - name: Download and install fonts
+        run: |
+            wget http://www.hayeren.am/fonts/GHEAMariam.zip -O /tmp/GHEAMariam.zip
+            unzip /tmp/GHEAMariam.zip -d /tmp/GHEAMariam
+            sudo mkdir -p /usr/local/share/fonts/GHEAMariam
+            sudo cp /tmp/GHEAMariam/*.otf /usr/local/share/fonts/GHEAMariam/
+            sudo fc-cache -fv
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
