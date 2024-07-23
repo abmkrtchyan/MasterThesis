@@ -1,9 +1,9 @@
-name: Run script on push to develop
+name: PDF creator
 
 on:
   push:
     branches:
-      - develop
+      - master
 
 jobs:
   build:
@@ -13,35 +13,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Install LaTeX (texlive-full)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-full
-
-      - name: Download and install fonts
-        run: |
-          wget http://www.hayeren.am/fonts/GHEAMariam.zip -O /tmp/GHEAMariam.zip
-          unzip /tmp/GHEAMariam.zip -d /tmp/GHEAMariam
-          sudo mkdir -p /usr/local/share/fonts/GHEAMariam
-          sudo cp /tmp/GHEAMariam/*.otf /usr/local/share/fonts/GHEAMariam/
-          sudo fc-cache -fv
-
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
 
-      - name: Run build script
+      - name: Install LaTeX (texlive-full)
         run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-full
+          wget http://www.hayeren.am/fonts/GHEAMariam.zip -O /tmp/GHEAMariam.zip
+          unzip /tmp/GHEAMariam.zip -d /tmp/GHEAMariam
+          sudo mkdir -p /usr/local/share/fonts/GHEAMariam
+          sudo cp /tmp/GHEAMariam/*.otf /usr/local/share/fonts/GHEAMariam/
+          sudo fc-cache -fv
           python build.py
           python build.py
-
-      - name: Move and rename main.pdf
-        run: |
           mv out/main.pdf MasterThesis.pdf
-
-      - name: Keep only main.pdf, remove other files
-        run: |
           find . -mindepth 1 -not -path './.git/*' -not -name '.git' -not -path './MasterThesis.pdf' -delete
 
       - name: Commit and push changes to develop branch
